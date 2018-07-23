@@ -5,6 +5,7 @@ import { NavigationActions } from 'react-navigation';
 import Button from './Button';
 import { lightGray, white } from '../utils/colors';
 import { addDeck } from '../actions';
+import { submitDeck } from '../utils/api';
 
 class AddDeck extends Component {
   state = {
@@ -34,10 +35,7 @@ class AddDeck extends Component {
     };
     dispatch(addDeck(deck));
     navigation.dispatch(NavigationActions.back());
-  }
-
-  comonentDidMount() {
-
+    submitDeck(input);
   }
 
   render() {

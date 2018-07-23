@@ -9,6 +9,7 @@ export function fetchDecks() {
 export function submitDeck(title) {
   return AsyncStorage.mergeItem(DECKS_STORAGE_KEY, JSON.stringify({
     [title]: {
+      title,
       questions: []
     }
   }));
