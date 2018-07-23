@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Button, View, Text, StyleSheet, Platform } from 'react-native';
 import { connect } from 'react-redux';
+import { lightGray } from '../utils/colors';
 
 class Deck extends Component {
   static navigationOptions = ({ navigation }) => {
@@ -24,6 +25,14 @@ class Deck extends Component {
     );
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 20,
+    backgroundColor: lightGray,
+  },
+})
 
 function mapStateToProps(decks, { navigation }) {
   const { deck } = navigation.state.params;
