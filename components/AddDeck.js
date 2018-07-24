@@ -34,7 +34,7 @@ class AddDeck extends Component {
       },
     };
     dispatch(addDeck(deck));
-    navigation.dispatch(NavigationActions.back());
+    navigation.replace('Deck', { deck: input });
     submitDeck(input);
   }
 
@@ -45,20 +45,23 @@ class AddDeck extends Component {
       <KeyboardAvoidingView
         style={styles.container}
         behavior='padding'
+        keyboardVerticalOffset={Platform.OS === 'ios' ? 64 : 80 }
       >
-        <Text style={styles.prompt}>What is the title</Text>
-        <Text style={styles.prompt}>of your deck?</Text>
-        <TextInput
-          style={styles.input}
-          onChangeText={this.handleChangeText}
-          placeholder='Deck title'
-          value={input}
-        />
-        <Button
-          onPress={this.handleSubmit}
-        >
-          Submit Deck
-        </Button>
+        <View style={styles.promptContainer}>
+          <Text style={styles.prompt}>What is the title</Text>
+          <Text style={styles.prompt}>of your deck?</Text>
+          <TextInput
+            style={styles.input}
+            onChangeText={this.handleChangeText}
+            placeholder='Deck title'
+            value={input}
+          />
+        </View>
+        <View style={styles.buttonContainer}>
+          <Button onPress={this.handleSubmit}>
+            Create Deck
+          </Button>
+        </View>
       </KeyboardAvoidingView>
     );
   }
@@ -70,17 +73,22 @@ const styles = StyleSheet.create({
     padding: 20,
     backgroundColor: lightGray,
     alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  promptContainer: {
+    flex: 1,
     justifyContent: 'center',
+    alignSelf: 'stretch',
   },
   prompt: {
     fontSize: 26,
+    alignSelf: 'center',
   },
   input: {
     backgroundColor: white,
     borderRadius: Platform.OS === 'ios' ? 16 : 2,
     padding: 20,
     marginTop: 30,
-    marginBottom: 15,
     alignSelf: 'stretch',
     fontSize: 20,
     shadowRadius: 3,
@@ -90,6 +98,12 @@ const styles = StyleSheet.create({
       width: 0,
       height: 3,
     },
+  },
+  buttonContainer: {
+    flex: 1,
+    justifyContent: 'flex-end',
+    alignSelf: Platform.OS === 'ios' ? 'center' : 'flex-end',
+    marginBottom: 20,
   },
 })
 

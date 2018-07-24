@@ -11,7 +11,7 @@ class Deck extends Component {
     return {
       title: `${deck} Deck`,
     }
-   }
+  }
 
   handleAddCard = () => {
     const { deck, navigation } = this.props;
@@ -21,7 +21,6 @@ class Deck extends Component {
 
   handleStartQuiz = () => {
     const { deck } = this.props;
-
   }
 
   render() {

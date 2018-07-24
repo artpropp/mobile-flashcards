@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Alert, Text, TextInput, StyleSheet, Platform, KeyboardAvoidingView } from 'react-native';
+import { Alert, View, Text, TextInput, StyleSheet, Platform, KeyboardAvoidingView } from 'react-native';
 import { connect } from 'react-redux';
 import { NavigationActions } from 'react-navigation';
 import Button from './Button';
@@ -63,27 +63,30 @@ class AddCard extends Component {
     return (
       <KeyboardAvoidingView
         style={styles.container}
-        behavior='height'
+        behavior='padding'
+        keyboardVerticalOffset={Platform.OS === 'ios' ? 64 : 80 }
       >
-        <Text style={styles.prompt}>Question</Text>
-        <TextInput
-          style={styles.input}
-          onChangeText={this.handleChangeQuestion}
-          placeholder='Question'
-          value={question}
-        />
-        <Text style={styles.prompt}>Answer</Text>
-        <TextInput
-          style={styles.input}
-          onChangeText={this.handleChangeAnswer}
-          placeholder='Answer'
-          value={answer}
-        />
-        <Button
-          onPress={this.handleSubmit}
-        >
-          Submit Card
-        </Button>
+        <View style={styles.promptContainer}>
+          <Text style={styles.prompt}>Question</Text>
+          <TextInput
+            style={styles.input}
+            onChangeText={this.handleChangeQuestion}
+            placeholder='Question'
+            value={question}
+          />
+          <Text style={styles.prompt}>Answer</Text>
+          <TextInput
+            style={styles.input}
+            onChangeText={this.handleChangeAnswer}
+            placeholder='Answer'
+            value={answer}
+          />
+        </View>
+        <View style={styles.buttonContainer}>
+          <Button onPress={this.handleSubmit}>
+            Submit
+          </Button>
+        </View>
       </KeyboardAvoidingView>
     );
   }
@@ -95,17 +98,23 @@ const styles = StyleSheet.create({
     padding: 20,
     backgroundColor: lightGray,
     alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  promptContainer: {
+    flex: 1,
+    paddingTop: 20,
     justifyContent: 'center',
+    alignSelf: 'stretch',
   },
   prompt: {
-    fontSize: 26,
+    marginTop: 20,
+    fontSize: 22,
+    alignSelf: 'center',
   },
   input: {
     backgroundColor: white,
     borderRadius: Platform.OS === 'ios' ? 16 : 2,
     padding: 20,
-    marginTop: 30,
-    marginBottom: 15,
     alignSelf: 'stretch',
     fontSize: 20,
     shadowRadius: 3,
@@ -115,6 +124,12 @@ const styles = StyleSheet.create({
       width: 0,
       height: 3,
     },
+  },
+  buttonContainer: {
+    flex: 1,
+    justifyContent: 'flex-end',
+    alignSelf: Platform.OS === 'ios' ? 'center' : 'flex-end',
+    marginBottom: 20,
   },
 })
 
