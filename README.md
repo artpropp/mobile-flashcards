@@ -22,3 +22,7 @@ npm start
 ### Requirements
 
 In order to execute the application on a device you need to install the Expo client application, which can be downloaded from both, Apple's App Store and Google's Play Store. Just follow the instruction that get printed to the console when running either ```yarn start``` or ```npm start```.
+
+### Tested
+
+This application has been tested in development mode on both iOS and Android devices.
