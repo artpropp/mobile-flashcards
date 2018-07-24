@@ -23,6 +23,6 @@ export function submitCard(deck, card) {
         title: deck,
         questions: decks[deck].questions.concat(card)
       };
-      AsyncStorage.setItem(DECKS_STORAGE_KEY, decks);
+      AsyncStorage.setItem(DECKS_STORAGE_KEY, JSON.stringify(decks));
     });
 }

@@ -6,6 +6,7 @@ import { createStackNavigator } from 'react-navigation';
 import reducer from './reducers';
 import DeckList from './components/DeckList';
 import Deck from './components/Deck';
+import AddCard from './components/AddCard';
 import AddDeck from './components/AddDeck';
 
 const MainNavigator = createStackNavigator({
@@ -17,6 +18,11 @@ const MainNavigator = createStackNavigator({
   },
   Deck: {
     screen: Deck,
+    navigationOptions: {
+    }
+  },
+  AddCard: {
+    screen: AddCard,
     navigationOptions: {
     }
   },
