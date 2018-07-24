@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, Platform, TouchableOpacity } from 'react-native
 import { connect } from 'react-redux';
 import { gray, lightRed,lightGray, white } from '../utils/colors';
 import Button from './Button';
+import { clearLocalNotifications, setLocalNotification } from '../utils/helpers';
 
 class Quiz extends Component {
   static navigationOptions({ navigation }) {
@@ -26,6 +27,14 @@ class Quiz extends Component {
   }
 
   handeAnswer = (correct) => {
+    const { answeredQuestions } = this.state;
+    const { questions } = this.props.deck;
+
+    if (answeredQuestions.length === questions.length -1) {
+      clearLocalNotifications()
+        .then(setLocalNotification);
+    }
+
     this.setState((previousState) => ({
       ...previousState,
       showAnswer: false,
