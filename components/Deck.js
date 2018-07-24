@@ -13,14 +13,14 @@ class Deck extends Component {
     }
   }
 
-  handleAddCard = () => {
-    const { deck, navigation } = this.props;
-    
-    navigation.push
-  }
-
   handleStartQuiz = () => {
-    const { deck } = this.props;
+    const { deck, navigation } = this.props;
+
+    if (deck.questions.length === 0) {
+      return Alert.alert('No cards in deck', 'You need to add at least one card to deck');
+    }
+
+    navigation.navigate('Quiz', { deck: deck.title });
   }
 
   render() {
@@ -39,7 +39,7 @@ class Deck extends Component {
         <Button style={styles.button} onPress={() => navigation.navigate('AddCard', { deck: deck.title })}>
           Add Card
         </Button>
-        <Button style={styles.button} onPress={() => navigation.navigate('Quiz', { deck: deck.title })}>
+        <Button style={styles.button} onPress={this.handleStartQuiz}>
           Start Quiz
         </Button>
       </View>
@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
     marginLeft: 0,
     marginRight: 0,
   }
-})
+});
 
 function mapStateToProps(decks, { navigation }) {
   const { deck } = navigation.state.params;

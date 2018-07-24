@@ -8,6 +8,7 @@ import DeckList from './components/DeckList';
 import Deck from './components/Deck';
 import AddCard from './components/AddCard';
 import AddDeck from './components/AddDeck';
+import Quiz from './components/Quiz';
 
 const MainNavigator = createStackNavigator({
   Home: {
@@ -30,6 +31,12 @@ const MainNavigator = createStackNavigator({
     screen: AddDeck,
     navigationOptions: {
       title: 'Add Deck',
+    }
+  },
+  Quiz: {
+    screen: Quiz,
+    navigationOptions: {
+
     }
   },
 })
