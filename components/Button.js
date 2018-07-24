@@ -2,10 +2,10 @@ import React from 'react';
 import { TouchableOpacity, Text, Platform, StyleSheet } from 'react-native';
 import { cyan, white } from '../utils/colors';
 
-export default function Button({ children, onPress }) {
+export default function Button({ children, onPress, style }) {
   return (
     <TouchableOpacity
-      style={Platform.OS === 'ios' ? styles.iosButton : styles.androidButton }
+      style={[Platform.OS === 'ios' ? styles.iosButton : styles.androidButton, style ]}
       onPress={onPress}>
       <Text style={styles.buttonText}>{children}</Text>
     </TouchableOpacity>

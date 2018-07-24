@@ -21,7 +21,7 @@ class DeckList extends Component {
       });
   }
   render() {
-    const { decks } = this.props;
+    const { decks, navigation } = this.props;
     const { ready } = this.state;
 
     if (ready === false) {
@@ -39,7 +39,7 @@ class DeckList extends Component {
             return (
               <TouchableOpacity
                 key={deck}
-                onPress={() => this.props.navigation.navigate('Deck', { deck })}
+                onPress={() => navigation.navigate('Deck', { deck })}
                 style={styles.deck}>
                 <Text style={styles.deckTitle}>
                   {title}
@@ -51,7 +51,7 @@ class DeckList extends Component {
             );
           })}
       </View>
-      <Button onPress={() => this.props.navigation.navigate('AddDeck')}>Add Deck</Button>
+      <Button onPress={() => navigation.navigate('AddDeck')}>Add Deck</Button>
     </View>
     );
   }
