@@ -1,6 +1,6 @@
 # React Native - Mobile Flashcards
 
-This is React Native application serves as an assignment to the third project in Udacity's React Nanodegree - React Native
+This React Native application served as an assignment to the third project in Udacity's React Nanodegree - Part: React Native
 
 ### Getting started
 
